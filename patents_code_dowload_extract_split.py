@@ -30,7 +30,7 @@ for link in soup.find_all('a'):
         file_names.append(link['href'].split('.')[0].replace('ipa',''))
         download_urls.append(url + link['href'])
 
-for download_url in download_urls:
+for download_url in download_urls[0:1]:
     r = requests.get(download_url)
     z = zipfile.ZipFile(io.BytesIO(r.content))
     z.extractall()
